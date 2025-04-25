@@ -89,6 +89,12 @@ async function run() {
             res.send(result);
         })
 
+        app.get('/users', async(req, res) => {
+            const cursor = userCollection.find();
+            const users = await cursor.toArray();
+            res.send(users);
+        })
+
 
 
     } finally {
@@ -99,7 +105,7 @@ async function run() {
 run().catch(console.dir);
 
 app.get('/', (req, res) => {
-    res.send('HOT HOT HOT COFFEEEEEEE')
+    res.send('HOT HOT HOT COFFEEEEEEE');
 })
 
 app.listen(port, () => {
